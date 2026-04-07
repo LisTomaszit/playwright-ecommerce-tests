@@ -1,7 +1,11 @@
 import { test, expect } from "@playwright/test";
 
 test("GET products should return list of products", async ({ request }) => {
-  const response = await request.get("https://fakestoreapi.com/products");
+  const response = await request.get("https://fakestoreapi.com/products", {
+    headers: {
+      "User-Agent": "Mozilla/5.0",
+    },
+  });
 
   expect(response.status()).toBe(200);
 
