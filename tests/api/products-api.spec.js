@@ -17,7 +17,11 @@ test("GET products should return list of products", async ({ request }) => {
 test("Get products should return valid product structure", async ({
   request,
 }) => {
-  const response = await request.get("https://fakestoreapi.com/products");
+  const response = await request.get("https://fakestoreapi.com/products", {
+    headers: {
+      "User-Agent": "Mozilla/5.0",
+    },
+  });
   expect(response.status()).toBe(200);
   const body = await response.json();
   expect(Array.isArray(body)).toBe(true);
@@ -31,7 +35,12 @@ test("Get products should return valid product structure", async ({
 });
 
 test("GET invalid endpoint should return 404", async ({ request }) => {
-  const response = await request.get("https://fakestoreapi.com/invalid");
+  const response = await request.get("https://fakestoreapi.com/invalid", {
+    headers: {
+      "User-Agent": "Mozilla/5.0",
+      "Content-Type": "application/json",
+    },
+  });
 
   expect(response.status()).toBe(404);
 });
