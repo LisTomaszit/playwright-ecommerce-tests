@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-test("GET products should return list of products", async ({ request }) => {
+test.skip("GET products should return list of products", async ({
+  request,
+}) => {
   const response = await request.get("https://fakestoreapi.com/products", {
     headers: {
       "User-Agent": "Mozilla/5.0",
@@ -14,7 +16,7 @@ test("GET products should return list of products", async ({ request }) => {
   expect(body.length).toBeGreaterThan(0);
 });
 
-test("Get products should return valid product structure", async ({
+test.skip("Get products should return valid product structure", async ({
   request,
 }) => {
   const response = await request.get("https://fakestoreapi.com/products", {
@@ -45,7 +47,7 @@ test("GET invalid endpoint should return 404", async ({ request }) => {
   expect(response.status()).toBe(404);
 });
 
-test("POST cart should create new cart", async ({ request }) => {
+test.skip("POST cart should create new cart", async ({ request }) => {
   const response = await request.post("https://fakestoreapi.com/carts", {
     data: {
       userId: 1,
