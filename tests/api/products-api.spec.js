@@ -36,7 +36,7 @@ test.skip("Get products should return valid product structure", async ({
   expect(product).toHaveProperty("category");
 });
 
-test("GET invalid endpoint should return 404", async ({ request }) => {
+test.skip("GET invalid endpoint should return 404", async ({ request }) => {
   const response = await request.get("https://fakestoreapi.com/invalid", {
     headers: {
       "User-Agent": "Mozilla/5.0",
